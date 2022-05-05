@@ -1,0 +1,33 @@
+#parent {
+    background-color: white;
+    height: 500px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 700px;
+    margin: auto;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#btn-box {
+    background-color: white;
+    height: 20px;
+    width: 700px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#box {
+    margin: auto;
+    width: 400px;
+    font-size: 66px;
+    font-weight: bold;
+    height: 94px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: white;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 140px;
+}

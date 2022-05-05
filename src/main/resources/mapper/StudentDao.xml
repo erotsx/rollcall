@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erotsx.rollcall.dao.StudentDao">
+
+    <resultMap id="StudentMap" type="com.erotsx.rollcall.entity.Student">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="class_id" jdbcType="VARCHAR" property="classId"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+    </resultMap>
+
+    <insert id="addStudents">
+        INSERT INTO `student`(`name`,`class_id`) VALUES
+        <foreach collection="list" separator="," item="Student">
+            (#{Student.name},#{Student.classId})
+        </foreach>
+    </insert>
+
+    <select id="getStudents" resultMap="StudentMap">
+        select name, gender
+        from student
+        where class_id = (select class_id from classes where class_name = #{className})
+    </select>
+    <select id="getNameList" resultType="java.lang.String">
+        select name
+        from student
+        where class_id = #{classId}
+    </select>
+
+
+</mapper>
