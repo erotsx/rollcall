@@ -13,4 +13,6 @@ public interface StudentDao {
     List<Student> getStudents(String className);
 
     List<String> getNameList(Integer classId);
+
+    void delStudents(String classId);
 }

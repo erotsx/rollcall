@@ -24,4 +24,8 @@ public class StudentService {
     public List<String> getNameList(Integer classId) {
         return studentDao.getNameList(classId);
     }
+
+    public void delStudents(String classId) {
+        studentDao.delStudents(classId);
+    }
 }

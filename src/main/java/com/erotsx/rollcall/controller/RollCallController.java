@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RollCallController {
 
     @RequestMapping("/call")
-    public String Welcome(Model model) {
+    public String call(Model model) {
         return "call";
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+        return "login";
     }
 }

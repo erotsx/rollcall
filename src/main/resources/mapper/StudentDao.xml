@@ -15,6 +15,11 @@
             (#{Student.name},#{Student.classId})
         </foreach>
     </insert>
+    <delete id="delStudents">
+        delete
+        from student
+        where class_id = #{classId}
+    </delete>
 
     <select id="getStudents" resultMap="StudentMap">
         select name, gender

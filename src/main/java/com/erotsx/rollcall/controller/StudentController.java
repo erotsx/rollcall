@@ -1,9 +1,7 @@
 package com.erotsx.rollcall.controller;
 
-import cn.hutool.json.JSONUtil;
 import com.alibaba.excel.EasyExcel;
 import com.erotsx.rollcall.entity.AjaxResult;
-import com.erotsx.rollcall.entity.Classes;
 import com.erotsx.rollcall.entity.Student;
 import com.erotsx.rollcall.listener.StudentDataListener;
 import com.erotsx.rollcall.service.StudentService;
@@ -16,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -29,6 +26,7 @@ public class StudentController {
 
     @PostMapping("/addStudents")
     public AjaxResult addStudents(MultipartFile file, String classId) throws IOException {
+        studentService.delStudents(classId);
         EasyExcel.read(file.getInputStream(), Student.class, new StudentDataListener(studentService, Integer.valueOf(classId))).sheet().doRead();
         return AjaxResult.doSuccess("success");
     }
